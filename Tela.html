@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Gama</title>
+    <style>
+        /* Estilo global para o corpo da página */
+        body {
+            margin: 5px;
+            /* Adicionando uma margem ao redor da página */
+            padding: 0;
+            border: 5px solid rgb(74, 12, 129);
+            /* Definindo uma borda ao redor da página */
+            background-color: #91919182;
+            box-sizing: border-box;
+            /* Mantendo a largura total incluindo borda e preenchimento */
+
+        }
+
+          /* Estilo global para o texto e fonte do corpo da página */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+           /* Estilo do cabeçalho */
+        header {
+            background-color: rgb(74, 12, 129);
+            padding: 5px;
+            text-align: center;
+        }
+         /* Estilo do botão de menu */
+        .menu-btn {
+            display: none;
+        }
+          /* Estilo do ícone do menu */
+        .icon-menu {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            margin-top: -75px;
+        }
+        /* Estilo das barras do ícone do menu */
+        .bar {
+            height: 5px;
+            width: 25px;
+            background-color: #000000;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+        /* Estilo do menu */
+        .menu {
+            display: none;
+            flex-direction: column;
+            align-items: flex-end;
+            padding: 10px;
+            background-color: rgb(74, 12, 129);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        
+        /* Estilo dos links no menu */
+        .menu a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 18px;
+            margin-bottom: 10px;
+            transition: 0.3s;
+        }
+        /* Estilo para centralizar elementos */
+        .centro {
+            text-align: center;
+        }
+        /* Estilo para centralizar imagens */
+        .centro img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            border: none;
+
+        }
+
+
+        .centroIMG {
+            text-align: center;
+        }
+
+        .centroIMG {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+
+
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+            color: rgb(247, 162, 50);
+            /* Nova cor ao passar o mouse sobre o título */
+
+            cursor: pointer;
+            /* Muda o cursor para indicar que é interativo */
+        }
+
+        .menu-btn:checked+.icon-menu .bar:nth-child(1) {
+            transform: translateY(10px) rotate(-45deg);
+        }
+
+        .menu-btn:checked+.icon-menu .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-btn:checked+.icon-menu .bar:nth-child(3) {
+            transform: translateY(-10px) rotate(45deg);
+        }
+
+        .menu-btn:checked~.menu {
+            display: flex;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            color: #ffffff;
+            padding: 5px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-decoration: underline;
+            transition: color 0.3s ease
+       
+        }
+
+        h1:hover {
+            color: rgb(247, 162, 50);
+            /* Nova cor ao passar o mouse sobre o título */
+
+            cursor: pointer;
+            /* Muda o cursor para indicar que é interativo */
+        }
+         /* Estilo da seção de informações */
+        .info-section {
+            display: none;
+            padding: 20px;
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+         /* Estilo dos containers de texto e imagem dentro da seção de informações */
+        .info-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+         /* Estilo do container de texto */
+        .text-container {
+            flex: 1;
+            padding-right: 20px;
+        }
+         /* Estilo do container de imagem */
+        .image-container {
+            flex: 1;
+            height: auto;
+            text-align: center;
+            /* Adicione ou ajuste as propriedades abaixo conforme necessário */
+            /* Exemplo: */
+            margin-right: 20px;
+            /* Espaçamento à direita */
+            margin-top: 10px;
+            /* Espaçamento superior */
+
+
+        }
+         /* Estilo da borda da imagem */
+        .image-container img {
+
+            border: 5px solid rgb(74, 12, 129);
+            /* Adicione a borda diretamente à imagem */
+        }
+/* Estilo para telas pequenas (máx. largura 400px) */
+        @media screen and (max-width: 400px) {
+            .menu-btn {
+                display: block;
+                position: absolute;
+                top: 5px;
+                left: 5px;
+            }
+
+            .icon-menu {
+                order: -1;
+            }
+
+            .menu {
+                display: none;
+                width: 100%;
+            }
+
+            .menu-btn:checked+.icon-menu .bar:nth-child(1) {
+                transform: translateY(10px) rotate(-45deg);
+            }
+
+            .menu-btn:checked+.icon-menu .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-btn:checked+.icon-menu .bar:nth-child(3) {
+                transform: translateY(-10px) rotate(45deg);
+            }
+
+            .menu-btn:checked~.menu {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+ <!-- Cabeçalho -->
+    <header>
+        <h1> Agenda de Eventos </h1>
+           <!-- Checkbox para controle do menu mobile -->
+        <input type="checkbox" class="menu-btn" id="menu-btn">
+         <!-- Ícone do menu mobile -->
+        <label class="icon-menu" for="menu-btn">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </label>
+           <!-- Menu -->
+        <div class="menu">
+            <a href="#" onclick="mostrarInformacoes('lazer')">
+                <font size="6">Lazer
+            </a></font>
+            <a href="#" onclick="mostrarInformacoes('educacao')">
+                <font size="6">Educação
+            </a></font>
+            <a href="#" onclick="mostrarInformacoes('saude')">
+                <font size="6">Saúde
+            </a></font>
+        </div>
+    </header>
+    
+    <!-- Div de informações -->
+    <div class="info-section" id="lazer-info">
+        <!-- Conteúdo para a categoria "Lazer" -->
+        <div class="info-container">
+            <div class="text-container">
+                <font size="5">
+                    <p> Grupo Brincantes do Gama 🤡</p>
+                </font>
+                <font size="3">
+                    <p> As apresentações do grupo Brincantes do Gama são compostas por enquetes, loas de palhaços,
+                        danças de bonecos gigantes, fantasias e mascarados, todos embalados por marchinhas
+                        tradicionais de carnaval, cantigas de roda, brincadeiras e folguedos da cultura popular.</p>
+                </font>
+
+                <font size="3">
+                    <p> Data: 18 de Julho 📆</p>
+                    <p> Horário: 15h ⏰</p>
+                    <p> Local: Teatro Sesc Paulo Gracindo – Gama/DF 📌 </p>
+                    <p> Classificação Indicativa: Livre ✅</p>
+                    <p> Informações: 61 3484-9142 📞</p>
+                    <p> Entrada: Franca</p>
+
+            </div>
+            <div class="image-container">
+                <img src="https://i0.wp.com/gamacidadao.com.br/wp-content/uploads/2020/02/1-Brincantes-do-Gama-2020.jpg?fit=800%2C600&ssl=1"
+                    alt="Retrato Brincantes do Gama" style="width: 350px; height: auto;">
+            </div>
+        </div>
+
+        <div class="info-container">
+            <div class="text-container">
+                <font size="5">
+                    <p>Feira de Artesanato e Cultura do Gama – FEARTEGAMA 2023 📌</p>
+                </font>
+                <font size="3">
+                    <p> Quem ama artesanato de qualidade e raro no Distrito Federal tem um encontro
+                        marcado nos próximos dias 12, 13 e 14 de outubro. </p>
+                </font>
+                <font size="3">
+                    <p> O
+                        evento faz parte das comemorações dos 63 anos da cidade e promete turbinar a economia
+                        local e movimentar a região com muita arte, música e comida boa. A entrada é gratuita. </p>
+                </font>
+            </div>
+            <div class="image-container" style="display: flex; justify-content: right; align-items: right;">
+                <img src="https://gamacidadao.com.br/wp-content/uploads/2023/10/gama-63-anos-1.jpg"
+                    alt="Folder evento FEARTE" style="width: 350px; height: auto;">
+            </div>
+        </div>
+        <div class="info-container">
+            <div class="text-container">
+                <font size="5">
+                    <p>ESPECIAL TITÃS NO PORKS GAMA 🐷</p>
+                </font>
+                <font size="3">
+                    <p>"Sonífera ilha, descansa meus olhos, sossega minha boca, me enche de luz..." 🎼</p>
+                    <p> Sábado, dia 18/11, partiu curtir esse tributo topíssimo preparado pela banda @iradetitas!
+                        E a gente já avisa que os caras mandam muito, viu? 😉</p>
+                    <p>
+                        E pra animar a noite, vai ter caipirinhas por R$ 15,00 e chopp pilsen (300ml) por R$ 5,00 até as
+                        20h!
+                        Além disso, não vai faltar petiscos de </P>
+                    <P>porco deliciosos e drinks super especiais! 🍺</p>
+                    </P>
+                    <p>
+                        Claro que tudo isso e muito mais sem cobrança de couvert, entrada ou 10%! 😎
+                    </p>
+                    <p>
+                        Então manda pra todo mundo que é fã e partiu!!! 😎😎
+                    </p>
+            </div>
+            <div class="image-container" style="display: flex; justify-content: right; align-items: right;">
+                <img src="https://s4.aconvert.com/convert/p3r68-cdx67/a3eyn-rfjbp.jpg" alt="Folder evento porks"
+                    style="width: 250px; height: auto;">
+            </div>
+        </div>
+    </div>
+<!-- Conteúdo para a categoria "Educação" -->
+    <div class="info-section" id="educacao-info">
+        <div class="info-container">
+            <div class="text-container">
+                <font size="5">
+                    <p>Processo Seletivo IFB📚</p>
+                </font>
+                <font size="3">
+                    <p> Cursos Técnicos Integrados: destinados a estudantes que acabaram de concluir o 9 o
+                        ano do ensino fundamental e vão ingressar no ensino médio.</p>
+                    <p> • Técnico em Alimentos</p>
+                    <p> • Técnico em Química</p>
+                    <p>Cursos Técnicos Subsequentes: destinado a estudantes que já concluíram o ensino
+                        médio</p>
+                    <p>• Técnico em logística</p>
+                    <p>•Proeja: cursos técnicos destinados a jovens e adultos.</p>
+                    <p>•Técnico em Administração</p>
+                </font>
+
+            </div>
+            <div class="image-container" style="display: flex; justify-content: right; align-items: right;">
+                <img src="https://s4.aconvert.com/convert/p3r68-cdx67/aauka-pd86v.jpg" alt="Folder processo seletivo"
+                    style="width: 250px; height: auto;">
+            </div>
+        </div>
+
+        <div class="info-container">
+            <div class="text-container">
+                <font size="5">
+                    <p>Reforço Escolar📚</p>
+                </font>
+                <font size="3">
+                    <p> Reforço Escolar – Auxílio nas dificuldades de aprendizagem das disciplinas de Matemática, Língua
+                        Portuguesa, Ciências Naturais e História.
+                    <p>
+
+                    <P>Data: 12/04 à 14/06</p>
+                    <P>Classificação: Crianças de 6 a 10 anos de idade.</p>
+
+                    <P>Público: Estudantes dos anos iniciais de escolas públicas e privadas do Gama e Região.</p>
+
+                    <P>Informações: 6130353900</p>
+
+                    <P> Local: Centro Universitário Uniceplac. </p>
+                </font>
+            </div>
+            <div class="image-container" style="display: flex; justify-content: right; align-items: right;">
+                <img src="https://s4.aconvert.com/convert/p3r68-cdx67/awwuo-o2gz8.jpg" style="width: 200px; height: auto;">
+
+            </div>
+        </div>
+    </div>
+
+<!-- Conteúdo para a categoria "Saúde" -->
+    <div class="info-section" id="saude-info">
+        <div class="info-container">
+            <div class="text-container">
+                <p>
+                    <font size="5"> Nutrição 🍽️
+                </p>
+                </font>
+                <p> Atendimento à comunidade gratuito. 🆓</p>
+                <p> Descubra o caminho para uma vida mais saudável conosco! </p>
+                <p> A UNICEPLAC oferece um serviço gratuito de nutrição aberto à comunidade.</p>
+                <p> Convidamos a população a aproveitar essa oportunidade única de receber orientações personalizadas
+                    para uma alimentação balanceada e hábitos saudáveis. </p>
+                <p> Cuide do seu bem-estar com o suporte especializado dos nossos estudantes e profissionais
+                    qualificados. Juntos, construímos um futuro mais saudável! ✅</p>
+                <p> Turno de atendimento: Matutino – Terça e Quinta | Noturno – Segunda e Quinta. ⏰📆</p>
+                <p> Local: Centro Universitário Uniceplac. 📍</p>
+            </div>
+            <div class="image-container" style="display: flex; justify-content: right; align-items: right;">
+                <img src="https://s4.aconvert.com/convert/p3r68-cdx67/aseut-rue9m.jpg" alt="Folder nutricao"
+                    style="width: 200px; height: auto;">
+            </div>
+        </div>
+        <div class="info-container">
+            <div class="text-container">
+                <p>
+                    <font size="5"> Psicologia 🧠Ψ </font>
+                </p>
+                <p> Enfrente desafios emocionais com apoio especializado!
+                    A UNICEPLAC oferece um serviço gratuito de psicologia à comunidade. </p>
+                <p> Convidamos a população a usufruir desse recurso valioso para cuidar da saúde mental e emocional.
+                </p>
+                <p> Tratamentos: Psicoterapia individual, psicoterapia de grupo, casal e família. Plantão psicológico
+                    e avaliação psicológica. ✅</p>
+                <p> O atendimento pode ser on-line ou presencial. </p>
+                <p> Local para atendimento presencial: Centro Universitário Uniceplac. 📍</p>
+                <p> Telefone: (61) 3035-3957 📞</p>
+                <p> WhatsApp: (61) 9 9697-4486 📞</p>
+            </div>
+            <div class="image-container" style="display: flex; justify-content: right; align-items: right;">
+                <img src="https://s4.aconvert.com/convert/p3r68-cdx67/a8h04-unq2j.jpg" alt="Folder psicologia"
+                    style="width: 200px; height: auto;">
+            </div>
+        </div>
+        <div class="info-container">
+            <div class="text-container">
+                <p>
+                    <font size="5"> Odontologia 🦷⚕️ </font>
+                </p>
+                <p> Sorria com confiança! A UNICEPLAC disponibiliza um serviço gratuito de odontologia para toda a
+                    comunidade.
+                </p>
+                <p> Convidamos você a aproveitar essa oportunidade de cuidar da sua saúde bucal com
+                    atendimento qualificado e tecnologia avançada. </p>
+                <p> Atendimento na Clínica Odontopediatria! </p>
+                <p> Turno de Atendimento: Vespertino – Terça e Quarta. ⏰📆</p>
+                <p> Idade: 6 a 11 anos. 👼🏼</p>
+                <p> Local: Centro Universitário Uniceplac. 📍</p>
+                <p> Telefone: (61) 3035-7561 📞</p>
+            </div>
+            <div class="image-container" style="display: flex; justify-content: right; align-items: right;">
+                <img src="https://s4.aconvert.com/convert/p3r68-cdx67/aanjk-7f3td.jpg" alt="Folder psicologia"
+                    style="width: 200px; height: auto;">
+            </div>
+        </div>
+<!-- Script JavaScript no final para mostrar informações específicas -->
+        <script>
+            
+            function mostrarInformacoes(categoria) {
+                // Oculta todas as seções de informações
+                document.querySelectorAll('.info-section').forEach(function (el) {
+                    el.style.display = 'none';
+                });
+
+                // Mostra a seção de informações específica
+                document.getElementById(`${categoria}-info`).style.display = 'block';
+
+                // Desmarca o checkbox do botão de três barras
+                document.getElementById("menu-btn").checked = false;
+            }
+        </script>
+</body>
+
+</html>

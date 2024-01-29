@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Gama</title>
+    <style>
+        /* Estilo global para o corpo da página */
+        body {
+            margin: 5px;
+            /* Adicionando uma margem ao redor da página */
+            padding: 0;
+
+            /* Definindo uma borda ao redor da página */
+            background-color: #ffffff;
+            box-sizing: border-box;
+            /* Mantendo a largura total incluindo borda e preenchimento */
+        }
+        /* Estilo global para o corpo da página */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        /* Estilo global para o corpo da página */
+        header {
+
+            background-color: #191970;
+            padding: 5px;
+            text-align: center;
+        }
+        /* Estilo do botão de menu mobile */
+        .menu-btn {
+            display: none;
+        }
+          /* Estilo do ícone do menu mobile */
+        .icon-menu {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            margin-top: -75px;
+        }
+          /* Estilo do ícone do menu mobile */
+        .bar {
+            height: 5px;
+            width: 25px;
+            background-color: #ffffff;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+        /* Estilo do menu */
+        .menu {
+            display: none;
+            flex-direction: column;
+            align-items: flex-end;
+            padding: 10px;
+            background-color: #191970;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            transition: color 0.3s ease;
+        }
+        
+        .menu a:hover {
+            color: rgb(247, 162, 50);
+            /* Nova cor ao passar o mouse sobre o título */
+
+            cursor: pointer;
+            /* Muda o cursor para indicar que é interativo */
+        }
+
+         /* Estilo dos links no menu */  
+        .menu a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+          /* Estilo para centralizar elementos */
+        .centro {
+            text-align: center;
+        }
+        /* Estilo para centralizar imagens */
+        .centro img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            border: none;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        .menu-btn:checked+.icon-menu .bar:nth-child(1) {
+            transform: translateY(10px) rotate(-45deg);
+        }
+
+        .menu-btn:checked+.icon-menu .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-btn:checked+.icon-menu .bar:nth-child(3) {
+            transform: translateY(-10px) rotate(45deg);
+        }
+
+        .menu-btn:checked~.menu {
+            display: flex;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            color: #ffffff;
+            padding: 5px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            transition: color 0.3s ease;
+            text-decoration: underline;
+        }
+
+        h1:hover {
+
+            color: rgb(247, 162, 50);
+            /* Nova cor ao passar o mouse sobre o título */
+
+            cursor: pointer;
+            /* Muda o cursor para indicar que é interativo */
+        }
+         /* Estilo da seção de informações */
+        .info-section {
+            display: none;
+            padding: 20px;
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+         /* Estilo dos containers de texto e imagem dentro da seção de informações */
+        .info-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+/* Estilo do container de texto */
+        .text-container {
+            flex: 1;
+            padding-right: 20px;
+        }
+ /* Estilo do container de imagem */
+        .image-container {
+            flex: 1;
+            height: auto;
+            text-align: center;
+            /* Adicione ou ajuste as propriedades abaixo conforme necessário */
+            /* Exemplo: */
+            margin-right: 20px;
+            /* Espaçamento à direita */
+            margin-top: 10px;
+            /* Espaçamento superior */
+        }
+  /* Estilo da borda da imagem */
+        .image-container img {
+
+            border: 5px solid #191970;
+            /* Adicione a borda diretamente à imagem */
+        }
+
+        .meu-botao {
+            width: 200px;
+            height: 50px;
+            font-size: 16px;
+            color: #191970;
+            border: 2px solid rgb(247, 162, 50);
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            margin: 0 auto;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3xs ease, color 0.3s ease;
+            margin: 0;
+            /* Adiciona uma transição suave para a cor de fundo e a cor do texto */
+        }
+
+        .meu-botao:hover {
+            background-color: #191970;
+            color: #d1e8ef;
+        }
+/* Estilo para telas pequenas (máx. largura 400px) */
+        @media screen and (max-width: 400px) {
+            .menu-btn {
+                display: block;
+                position: absolute;
+                top: 5px;
+                left: 5px;
+            }
+
+            .icon-menu {
+                order: -1;
+            }
+
+            .menu {
+                display: none;
+                width: 100%;
+            }
+
+            .menu-btn:checked+.icon-menu .bar:nth-child(1) {
+                transform: translateY(10px) rotate(-45deg);
+            }
+
+            .menu-btn:checked+.icon-menu .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-btn:checked+.icon-menu .bar:nth-child(3) {
+                transform: translateY(-10px) rotate(45deg);
+            }
+
+            .menu-btn:checked~.menu {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+     <!-- Cabeçalho -->
+    <header>
+        
+        <h1> Administrador </h1>
+         <!-- Checkbox para controle do menu mobile -->
+        <input type="checkbox" class="menu-btn" id="menu-btn">
+         <!-- Ícone do menu mobile -->
+        <label class="icon-menu" for="menu-btn">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </label>
+         <!-- Menu -->
+        <div class="menu">
+            <a href="#" onclick="mostrarInformacoes('ferramentas')">
+                <font size="5">Inserir novas ferramentas
+            </a></font>
+            <a href="#" onclick="mostrarInformacoes('Modificar')">
+                <font size="5">Modificar Agenda
+            </a></font>
+        </div>
+
+    </header>
+      <!-- Seções de informações para diferentes categorias -->
+    <div class="info-section" id="ferramentas-info">
+        <div class="button-container">
+            <button class="meu-botao" onclick="inserirFerramenta()"
+                style="font-size: 17px; padding:10px 20px">Ferramentas de comunicação</button>
+            <button class="meu-botao" onclick="inserirFerramenta()"
+                style="font-size: 17px; padding:10px 20px; margin-top: 10px">Ferramentas de segurança</button>
+        </div>
+    </div>
+    </div>
+    <div class="info-section" id="Modificar-info">
+
+        <div class="button-container">
+            <button class="meu-botao" onclick="inserirFerramenta()"
+                style="font-size: 17px; padding:10px 20px; margin-top: 10px">Adicionar eventos</button>
+            <button class="meu-botao" onclick="inserirFerramenta()"
+                style="font-size: 17px; padding:10px 20px; margin-top: 10px">Alterar calendário</button>
+            <button class="meu-botao" onclick="inserirFerramenta()"
+                style="font-size: 17px; padding:10px 20px; margin-top: 10px">Remover evento</button>
+        </div>
+
+    </div>
+    </div>
+
+    <script>
+        function mostrarInformacoes(categoria) {
+            // Oculta todas as seções de informações
+            document.querySelectorAll('.info-section').forEach(function (el) {
+                el.style.display = 'none';
+            });
+
+            // Mostra a seção de informações específica
+            document.getElementById(`${categoria}-info`).style.display = 'block';
+
+            // Desmarca o checkbox do botão de três barras
+            document.getElementById("menu-btn").checked = false;
+        }
+    </script>
+</body>
+
+</html>
